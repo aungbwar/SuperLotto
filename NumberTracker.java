@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class NumberTracker {
@@ -22,7 +23,7 @@ public class NumberTracker {
     return powerNumber[number];
   }
 
-  public void showStats() {
+  public void showStats(PrintWriter result) {
 
     ArrayList<int[]> regularStats = new ArrayList<>();
 
@@ -32,26 +33,26 @@ public class NumberTracker {
 
     regularStats.sort((a, b) -> b[1] - a[1]);
 
-    System.out.println("\n***** Regular Numbers *****");
+    result.println("\n***** Regular Numbers *****");
 
     for (int[] x : regularStats) {
-      System.out.printf("Regular %2d: %d%n", x[0], x[1]);
+      result.printf("Regular %2d: %d%n", x[0], x[1]);
     }
 
     /////////////////////////////////////////////////////
 
     ArrayList<int[]> powerStats = new ArrayList<>();
-    
+
     for (int i = 1; i <= 27; i++) {
       powerStats.add(new int[] {i, powerNumber[i]});
     }
 
     powerStats.sort((a, b) -> b[1] - a[1]);
 
-    System.out.println("\n***** Mega Numbers *****");
+    result.println("\n***** Mega Numbers *****");
+
     for (int[] x : powerStats) {
-      System.out.printf("Mega %2d: %d%n", x[0], x[1]);
+      result.printf("Mega %2d: %d%n", x[0], x[1]);
     }
   }
-  
 }
